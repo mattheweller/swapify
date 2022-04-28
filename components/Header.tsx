@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Logo from '../public/logo.svg'
-import Twitter from '../public/twitter.svg' // TODO
-import Medium from '../public/medium.svg' // TODO: Mirror, no?
+import Twitter from '../public/twitter.svg'
+import Medium from '../public/medium.svg'
 
 export enum HeaderActive {
     Swaps,

@@ -1,4 +1,4 @@
-import { creatPortal } from "react-dom"; // TODO: If it's not being used, get rid of it
+import { creatPortal } from "react-dom";
 import ReactDOM from "react-dom";
 import React, { useEffect, useState } from "react";
 import VNFTCard from "./VNFTCard";
@@ -14,12 +14,13 @@ const Modal = ({
     approvedNft,
     approved,
     address,
-    txLoad, // TODO: If it's not being used, get rid of it
+    txLoad,
     swapId,
     initialized
 }) => {
-    const [selected, setSelected] = React.useState([false, false, false]); // TODO: If it's not being used, get rid of it
+    const [selected, setSelected] = React.useState([false, false, false]);
     const [loading, setLoading] = React.useState(false);
+    //Load wallet nfts
     const [nfts, setNfts] = useState([]);
 
     console.log(address);
@@ -28,12 +29,12 @@ const Modal = ({
         (async () => {
             try {
                 const result = await axios.get(
-                    `https://eth-rinkeby.alchemyapi.io/v2/demo/getNFTs/nBdRx9b77E3p9TU4Vte09EYfuUGisD1Z?owner=${address}` // TODO: Where is a better place to store this? Why is this so ugly?
+                    `https://eth-rinkeby.alchemyapi.io/v2/demo/getNFTs/nBdRx9b77E3p9TU4Vte09EYfuUGisD1Z?owner=${address}`
                 );
 
-                console.log(result); // TODO: Do we need to see something?
+                console.log(result);
 
-                if (result?.data?.ownedNfts?.length > 0) { // TODO: What do all these question marks mean?
+                if (result?.data?.ownedNfts?.length > 0) {
                     setNfts(result?.data?.ownedNfts.splice(0, 3));
                     console.log(nfts);
                 }
@@ -41,13 +42,13 @@ const Modal = ({
                 console.error(err);
             }
         })();
-    }, [address]); // TODO: Do I need to add nfts here?
+    }, [address]);
 
     return isShowing
         ? ReactDOM.createPortal(
               <React.Fragment>
                   <div
-                      className="w-screen h-screen bg-white bg-opacity-[0.4] backdrop-blur-[3px] z-10 top-0 left-0 fixed" // TODO: How does all these stuff work?
+                      className="w-screen h-screen bg-white bg-opacity-[0.4] backdrop-blur-[3px] z-10 top-0 left-0 fixed"
                       data-aos="fade-in"
                   >
                       <div className="w-1/3 h-full flex items-center mx-auto">
@@ -145,7 +146,7 @@ const Modal = ({
               </React.Fragment>,
               document.body
           )
-        : null; // TODO: Fix the formatting
+        : null;
 };
 
 export default Modal;
